@@ -1,0 +1,8 @@
+{
+  "git.autoRepositoryDetection": "openEditors",
+  "scm.defaultViewMode": "tree",
+  "files.exclude": {
+    "**/.venv": true,
+    "**/__pycache__": true
+  }
+}

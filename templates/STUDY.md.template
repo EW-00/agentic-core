@@ -1,0 +1,41 @@
+# STUDY.md — 本机当前 study 路由表（L2，永不离开本机、永不进 git）
+
+> 本文件是 agent 的第一优先路由：项目在哪、约定是什么、红线在哪。
+> 换 study 时整个作废重写。通用教训不要写在这里——回流到 agentic-core（剥掉客户名词）。
+
+## 基本信息
+
+- **Study / 客户**：<名称>
+- **我的角色**：<DS / DE / ...，负责哪些 repo>
+- **起止**：<YYYY-MM 至 YYYY-MM>
+
+## Repo 路由（agent 读代码先来这里）
+
+| Repo | 路径 | 职责 | 我是否 owner |
+|---|---|---|---|
+| <DS> | `projects/<study>/repos/<ds>` | <一句话> | 是/否 |
+
+主要项目：`projects/<study>/`。读 code 默认去上表路径。
+
+## 项目文档
+
+- Formulation / 架构：`projects/<study>/docs/formulation.md`
+- 决策日志（append-only）：`projects/<study>/docs/decisions.md`
+- Handoffs：`projects/<study>/handoffs/`
+
+## 环境与命令
+
+- Python 环境：<uv / venv 路径>
+- 测试命令：`<...>`
+- Pipeline / 部署：<...>
+
+## 合规红线（agent 必读）
+
+- 客户代码与数据**永不离开本机**。唯一出口管道：<SharePoint / ...>（书面许可状态：<有/待办>）。
+- 本机对个人 GitHub **pull-only**，永不 push。
+- <客户特有规定>
+
+## 本 study 工具备注
+
+- AI 工具与额度：<Windsurf 2000 credits/月 + ask.dell / ...>
+- 本机工具的坑：先读 `core/adapters/<tool>/known-issues.md`，新坑记这里，通用的回流 core。

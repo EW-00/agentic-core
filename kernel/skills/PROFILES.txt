@@ -1,0 +1,24 @@
+# kernel skills 安装范围清单
+# 格式：<skill>  <profiles>（逗号分隔，无空格）
+# 语义：client = 客户机；firm = McKinsey 机；personal = 个人机（全量）
+# install.sh --profile <名> 只安装含该标签的 skill；未列出的 skill 默认 personal-only
+#
+# 2026-07-04 逐项确认定稿
+
+task-handoff                    client,firm,personal
+session-distillation            client,firm,personal
+parallel-subagents              personal
+staged-approach                 personal
+ai-debugging-diagnosis          personal
+interview-evaluation            personal
+multi-agent-analysis            personal
+ai-programming-mindset          personal
+ai-agent-cli-guide              personal
+ai-product-design               personal
+deep-research-survey            personal
+video-reading-packet            personal
+bilibili-whisper-transcription  personal
+presentation-slides             personal
+share-report                    personal
+markdown-html-conversion        personal
+temporal-info-verification      personal

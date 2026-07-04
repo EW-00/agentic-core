@@ -1,0 +1,13 @@
+# 第三方 skills 清单
+# 格式：<repo> <skill> <profiles>（逗号分隔；client=客户机 firm=McKinsey机 personal=个人机）
+# 2026-07-04 逐项确认定稿
+
+https://github.com/vercel-labs/skills find-skills client,firm,personal
+https://github.com/mattpocock/skills improve-codebase-architecture client,firm,personal
+https://github.com/mattpocock/skills tdd client,firm,personal
+https://github.com/mattpocock/skills grill-me client,firm,personal
+https://github.com/obra/superpowers systematic-debugging client,firm,personal
+https://github.com/obra/superpowers requesting-code-review client,firm,personal
+https://github.com/getsentry/skills code-simplifier client,firm,personal
+https://github.com/KKKKhazix/khazix-skills hv-analysis personal
+https://github.com/KKKKhazix/khazix-skills storage-analyzer personal
