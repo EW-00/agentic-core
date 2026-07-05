@@ -50,8 +50,18 @@ warn() { printf '  \033[33m!\033[0m %s\n' "$1"; }
 
 link_or_copy() { # $1=src $2=dst  (目录或文件)
   if [ "$COPY_MODE" = 1 ]; then
-    rm -rf "$2"; cp -R "$1" "$2"
+    # 只覆盖本脚本自己拷出来的东西（带 marker），手工/其他工具的产物一律不碰
+    if [ -e "$2" ] && [ ! -f "$2/.agentic-core-managed" ]; then
+      warn "已存在且非本脚本产物，跳过：$2（确认无用可手动删除后重跑）"
+      return 2
+    fi
+    rm -rf "$2"; cp -R "$1" "$2"; touch "$2/.agentic-core-managed" 2>/dev/null || true
   else
+    # 目标是真目录/真文件（非 symlink）时不动它——ln -sfn 会把链接塞进目录内部制造嵌套垃圾
+    if [ -e "$2" ] && [ ! -L "$2" ]; then
+      warn "已存在且不是 symlink，跳过：$2（确认无用可手动删除后重跑）"
+      return 2
+    fi
     ln -sfn "$1" "$2"
   fi
 }
@@ -82,8 +92,9 @@ else
 fi
 
 # ---------------------------------------------------------------- rules symlink
-link_or_copy "$CORE_DIR/kernel/rules" "$WORKSPACE/rules"
-say "rules/ → core/kernel/rules（SOUL/COMMUNICATION + axioms）"
+if link_or_copy "$CORE_DIR/kernel/rules" "$WORKSPACE/rules"; then
+  say "rules/ → core/kernel/rules（SOUL/COMMUNICATION + axioms）"
+fi
 if [ ! -f "$CORE_DIR/kernel/rules/USER.md" ]; then
   warn "USER.md 未放置：它不入库（隐私），请手动放到 core/kernel/rules/USER.md（已被 .gitignore 忽略，见 Day-1 checklist）"
 fi
@@ -128,8 +139,9 @@ for d in "$CORE_DIR"/kernel/skills/*/; do
   tags="$(awk -v s="$name" '$1==s {print $2}' "$PROFILES_FILE" 2>/dev/null)"
   [ -z "$tags" ] && tags="personal"   # 未列入清单 → 默认只装个人机
   if profile_match "$tags"; then
-    link_or_copy "${d%/}" "$AGENTS_SKILLS/$name"
-    installed=$((installed+1))
+    if link_or_copy "${d%/}" "$AGENTS_SKILLS/$name"; then
+      installed=$((installed+1))
+    fi
   else
     skipped=$((skipped+1))
   fi
@@ -161,7 +173,7 @@ ensure_tool_links() { # $1=工具 skills 目录
   mkdir -p "$1"
   for d in "$AGENTS_SKILLS"/*/; do
     name="$(basename "$d")"
-    [ -e "$1/$name" ] || link_or_copy "${d%/}" "$1/$name"
+    [ -e "$1/$name" ] || link_or_copy "${d%/}" "$1/$name" || true
   done
 }
 ensure_tool_links "$HOME/.claude/skills"
