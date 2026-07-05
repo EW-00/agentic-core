@@ -23,6 +23,15 @@ cd ~/workspace/core && ./install.sh --profile <client|firm|personal>   # 幂等�
 （模板，你填写）、.windsurf/rules/core-*.md、全局 skills（~/.agents/skills + 各工具
 symlink）、哨兵 root repo。收更新：`cd ~/workspace/core && git pull && ./install.sh`。
 
+**更新语义（两类 skill 不同）**：
+
+- **kernel skills** = symlink 指向 core → `git pull` 即全机生效，无需重装；
+  重跑 install.sh 只为补新增/新机首装（Windows 原生侧为拷贝模式，需重跑刷新）。
+- **第三方 skills**（skills.txt）= npx 装的本机快照 → 不随 pull 更新；
+  升级 = 删掉 `~/.agents/skills/<name>` 后重跑 install.sh。
+  **规则：第三方 skill 不原地改**——想 customize 就 fork 进 `kernel/skills/`
+  改名成自研（如 grill-me → grill-me-batch），从而获得 symlink 同步。
+
 ## 分层（放哪儿的唯一判据："换了项目/工具还成立吗？"）
 
 | 层 | 内容 | 位置 | 流动 |
