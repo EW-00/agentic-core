@@ -19,9 +19,10 @@
 
 ## 项目文档
 
-- Formulation / 架构：`projects/<study>/docs/formulation.md`
-- 决策日志（append-only）：`projects/<study>/docs/decisions.md`
+- 各 repo 设计现状：`projects/<study>/repos/<repo>/docs/design.md`（DS repo = formulation 现状）
+- 决策日志（两层）：repo 级 → `repos/<repo>/docs/decisions.md`；跨 repo/客户拍板 → `projects/<study>/docs/decisions.md`
 - Handoffs：`projects/<study>/handoffs/`
+- 会话面包屑（journal，由 rule 自动写、/close-out 每日压实）：`projects/<study>/notes/journal.md`
 
 ## 环境与命令
 

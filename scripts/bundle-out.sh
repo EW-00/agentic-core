@@ -49,7 +49,7 @@ done
 [ "$found" = 0 ] && echo "  ! projects/*/repos/ 下没有找到 git repo"
 
 # ---- 非 git 的项目文档 -----------------------------------------------------
-for d in docs notes handoffs chat_session_distillations; do
+for d in docs notes handoffs; do
   for p in "$WORKSPACE"/projects/*/"$d"/; do
     [ -d "$p" ] || continue
     study="$(basename "$(dirname "$p")")"

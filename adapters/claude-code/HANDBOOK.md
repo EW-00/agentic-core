@@ -12,3 +12,7 @@
   装好后跑一遍 core 的 install.sh 即可对齐全套 skills。
 - Claude Code 对 AGENTS.md/skill 的遵循度是三个工具里最好的，keyword 触发基本可用，
   但确定性起见仍推荐斜杠显式呼出。
+
+- **journal 面包屑 rule**：内容真身在 `adapters/windsurf/rules/core-journal.md`。
+  Claude Code 侧等价实现：把同样内容放进 workspace 的 CLAUDE.md/AGENTS.md 约束段，
+  或用 SessionEnd hook 提醒跑 /close-out。MBA 启用时顺手做。

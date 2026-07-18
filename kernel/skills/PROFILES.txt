@@ -6,7 +6,7 @@
 # 2026-07-04 逐项确认定稿
 
 task-handoff                    client,firm,personal
-session-distillation            client,firm,personal
+close-out                       client,firm,personal
 parallel-subagents              personal
 staged-approach                 personal
 ai-debugging-diagnosis          personal

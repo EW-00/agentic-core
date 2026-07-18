@@ -18,4 +18,7 @@
       与 `adapters/windsurf/HANDBOOK.md` §6。
 - [ ] **`.git/info/exclude` 实验结果**：验证 Cascade 是否放行（HANDBOOK §4），
       结果无论正反都回流更新该小节。
+- [ ] **Dell 机启用 journal + close-out**：把 core-journal.md 装进 .windsurf/rules/（重跑
+      install.sh 即可），然后跑一次 `/close-out` 首次 bootstrap（decisions 大清理 +
+      design.md 反向生成，挑 credit 富余的日子）。
 - [ ] **EM 书面许可**：SharePoint bundle 通道的合规确认，拿到后在 Day-1 checklist §D 打勾模式固化。
