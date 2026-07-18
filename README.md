@@ -52,7 +52,7 @@ skills.txt           第三方 skill 清单（npx skills add -g）
 adapters/{windsurf,claude-code,cursor}/   rules 模板 + HANDBOOK.md（接入机制、计费特性、付过学费的坑）
 templates/           AGENTS.md / STUDY.md / Day-1 checklist / vscode 设置
 scripts/             bundle-out.sh / apply-in.sh（credits 耗尽时的 SharePoint 双向流程）
-docs/                git-boundaries（三层 git 边界）/ BACKFLOW-TODO（待回流清单）
+docs/                git-boundaries（三层 git 边界）/ migrate-existing-workspace（旧 workspace 原地收编）/ BACKFLOW-TODO（待回流清单）
 install.sh           幂等物化脚本（见文件头注释）
 ```
 

@@ -1,5 +1,7 @@
 # Day-1 Checklist — 新机器 / 新 study 从零到可工作
 
+> 机器上已有运转中的旧 workspace？走 `docs/migrate-existing-workspace.md`（原地收编），不要用本清单。
+
 > 目标：两小时内完成。每次用完在末尾"本次经验"记一行，回流改进本清单。
 
 ## A. 终端环境（machine-setup，约 20 分钟）
