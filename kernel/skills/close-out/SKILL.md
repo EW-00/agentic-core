@@ -17,14 +17,19 @@ description: 每日收尾仪式：读 journal 面包屑 + 当天 git 证据 + �
 
 - **会话内**：journal rule（always_on）在每次实质性改码的会话里自动追加一行面包屑
   （改了什么 + 为什么）——零额外成本，小会话直接关，无需任何收尾动作。
-- **每日一次**：本 skill 把当天所有面包屑 + git 证据 + 场外结论**压实**进权威文档，
-  然后清空 journal。这是 write-ahead log + compaction：记录免费化，压实按天化。
+- **随时可压实，每日至少一次**：本 skill 把**自上次压实以来**的面包屑 + git 证据 +
+  场外结论压实进权威文档，然后清空 journal。这是 write-ahead log + compaction：
+  记录免费化，压实按需化（每天下班前兜底一次）。
+- **复杂对话的最高保真收尾**：在该对话的同一窗口内直接调用本 skill——此时全部推理和
+  结论都在 context 里，不需要靠面包屑重建，产出质量最高。压实完照常清 journal，
+  当天晚些时候的下一次 close-out 只处理之后的增量。
 
 ## 输入源（三个，缺一不可地检查）
 
 1. **Journal**：`projects/<study>/notes/journal.md` —— 当天各会话的 what + why 面包屑
-2. **Git 证据**：对每个 `projects/<study>/repos/*/`：
-   `git log --oneline --since="6am" --all` + `git status --short` + 必要时 `git diff --stat`
+2. **Git 证据**：对每个 `projects/<study>/repos/*/`，看**自上次压实以来**的改动
+   （journal 首行日期或当天 6am，取更早者）：
+   `git log --oneline --since=<该时点> --all` + `git status --short` + 必要时 `git diff --stat`
 3. **场外结论**：用户在调用命令里带的内容（如 `/close-out 场外：客户同意 X 改软约束`）。
    **不要反问**——用户没带就视为"无"，直接开始。多问一轮 = 多花一次 credit。
 
@@ -46,7 +51,8 @@ description: 每日收尾仪式：读 journal 面包屑 + 当天 git 证据 + �
 1. 读 journal.md 全部未压实条目
 2. 对每个 repo 跑 git 证据命令（只看**今天**的改动）
 3. 读现有的六类文档 + 在途 HANDOFF.md
-4. 内部列一张清单：每份文档标"要改 / 不用改"——漏一个不行
+4. **同窗口调用时**（刚结束一轮复杂对话）：当前对话内容本身是第一信源，journal/git 只作补充
+5. 内部列一张清单：每份文档标"要改 / 不用改"——漏一个不行
 
 ### 第二步：压实（编辑者四原则）
 
