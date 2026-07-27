@@ -14,8 +14,9 @@
       通用部分回流到 `kernel/skills/<对应名>/SKILL.md`。
 - [ ] **Handoff skill 的 Windsurf 适配经验**：交接文档的实际格式/瘦身取舍如果和
       kernel 版有出入，以 Dell 实战版为准回流。
-- [ ] **Windsurf 全局 skills 目录路径**：确认后回填 `install.sh` 的 `WINDSURF_SKILLS_DIR`
-      与 `adapters/windsurf/HANDBOOK.md` §6。
+- [ ] **notebook-analysis skill 回流评估**：Dell 的 `~/.codeium/windsurf/skills/` 里发现的
+      清单外 skill——若是自研且通用（notebook 分析听起来是），剥客户信息后收进
+      `kernel/skills/`；`starburst-formulation-refactor-validation` 是 L2，留在本机不回流。
 - [ ] **`.git/info/exclude` 实验结果**：验证 Cascade 是否放行（HANDBOOK §4），
       结果无论正反都回流更新该小节。
 - [ ] **Dell 机启用 journal + close-out**：把 core-journal.md 装进 .windsurf/rules/（重跑

@@ -53,10 +53,10 @@ review 时按分组逐 repo 看；嫌乱可在面板里折叠/隐藏不相关 re
 
 ## 6. 全局 skills 目录 `[人读 + 待验证]`
 
-个人 Mac 上的机制：skills 唯一真身在 `~/.agents/skills/`，各工具目录放 symlink。
-Windsurf 的全局 skills 目录路径待在 Dell 机上确认一次（候选：`~/.codeium/windsurf/`
-下的 skills/global_workflows 目录），确认后填进 install.sh 的 `WINDSURF_SKILLS_DIR`
-变量并回流本文件。
+skills 唯一真身在 `~/.agents/skills/`，各工具目录放 symlink。
+**Windsurf 全局 skills 目录 = `~/.codeium/windsurf/skills`**（2026-07 Dell/WSL 实测，
+使用 WSL 时为 WSL 侧的 home）。install.sh 已自动探测该目录并接入；斜杠呼出如未见
+新 skill，检查 Windsurf 是否解析该目录下的 symlink——不解析则手动 `cp -RL` 拷实体。
 
 ## 7. 斜杠机制备忘 `[人读]`
 

@@ -25,7 +25,10 @@ THIRD_PARTY=1
 SENTINEL=1
 COPY_MODE=0
 
-# Windsurf/Cursor 的全局 skills 目录：在对应机器上确认后回填（见 adapters/*/HANDBOOK.md）
+# Windsurf 全局 skills 目录（2026-07 在 Dell/WSL 实测确认）；存在即自动接入，env 可覆盖
+if [ -z "${WINDSURF_SKILLS_DIR:-}" ] && [ -d "$HOME/.codeium/windsurf/skills" ]; then
+  WINDSURF_SKILLS_DIR="$HOME/.codeium/windsurf/skills"
+fi
 WINDSURF_SKILLS_DIR="${WINDSURF_SKILLS_DIR:-}"
 CURSOR_SKILLS_DIR="${CURSOR_SKILLS_DIR:-}"
 
@@ -181,7 +184,7 @@ say "Claude Code 接入（~/.claude/skills/*）"
 if [ -n "$WINDSURF_SKILLS_DIR" ]; then
   ensure_tool_links "$WINDSURF_SKILLS_DIR"; say "Windsurf 接入（$WINDSURF_SKILLS_DIR）"
 else
-  warn "WINDSURF_SKILLS_DIR 未设置——在 Windsurf 机器上确认全局 skills 目录后回填（见 adapters/windsurf/HANDBOOK.md §6）"
+  warn "未发现 Windsurf 全局 skills 目录（~/.codeium/windsurf/skills）——本机无 Windsurf 则忽略；有则用 WINDSURF_SKILLS_DIR=<路径> 重跑"
 fi
 if [ -n "$CURSOR_SKILLS_DIR" ]; then
   ensure_tool_links "$CURSOR_SKILLS_DIR"; say "Cursor 接入（$CURSOR_SKILLS_DIR）"
